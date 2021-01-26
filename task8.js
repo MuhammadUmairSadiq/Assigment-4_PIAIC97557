@@ -1,39 +1,47 @@
-var ones = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine',
-'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen',
-'seventeen', 'eighteen', 'nineteen'];
-var tens = ['','','twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty',
-'ninety'];
-var num = parseInt(prompt("Enter your Number"));
-var numString = num.toString();
-
-  if (num < 0) {
-    alert("Negative numbers are not supported.");
+var th = ['','Thousand','Million', 'Billion','Trillion'];
+var dg = ['Zero','One','Two','Three','Four', 'Five','Six','Seven','Eight','Nine'];
+ var tn = ['Ten','Eleven','Twelve','Thirteen', 'Fourteen','Fifteen','Sixteen', 'Seventeen',
+ 'Eighteen','Nineteen'];
+ var tw = ['Twenty','Thirty','Forty','Fifty', 'Sixty','Seventy','Eighty','Ninety'];
+ var s = parseInt(prompt("Enter your Number"));
+    s = s.toString();
+    s = s.replace(/[\, ]/g,'');
+    if (s != parseFloat(s)) 
+      alert('not a number');
+    var x = s.indexOf('.');
+    if (x == -1)
+        x = s.length;
+    if (x > 15)
+        alert ('too big');
+    var n = s.split(''); 
+    var str = '';
+    var sk = 0;
+    for (var i=0;   i < x;  i++) {
+        if ((x-i)%3==2) { 
+            if (n[i] == '1') {
+                str += tn[Number(n[i+1])] + ' ';
+                i++;
+                sk=1;
+            } else if (n[i]!=0) {
+                str += tw[n[i]-2] + ' ';
+                sk=1;
+            }
+        } else if (n[i]!=0) { 
+            str += dg[n[i]] +' ';
+            if ((x-i)%3==0) str += 'Hundred ';
+            sk=1;
+        }
+        if ((x-i)%3==1) {
+            if (sk)
+                str += th[(x-i-1)/3] + ' ';
+            sk=0;
+        }
     }
 
-  else if (num === 0) {
-    alert("zero");
-  }
-  
-  else if (num < 20, i = num-1) {
-    alert(ones[i]);
-   }  
-
-  else if (numString.length === 2) {
-alert(tens[numString[0]] + ' ' + ones[numString[1]]);
-  }
-
-  if (numString.length == 3) {
-    if (numString[1] === '0' && numString[2] === '0')
-      alert(ones[numString[0]] + ' hundred');
-    else
-      alert(ones[numString[0]] + ' hundred and ' + convert(+(numString[1] + numString[2])));
-  }
-
-  if (numString.length === 4) {
-    var end = +(numString[1] + numString[2] + numString[3]);
-    if (end === 0) alert(ones[numString[0]] + ' thousand');
-    if (end < 100) alert(ones[numString[0]] + ' thousand and ' + convert(end));
-    alert(ones[numString[0]] + ' thousand ' + convert(end));
-  }
-
-
+    if (x != s.length) {
+        var y = s.length;
+        str += 'point ';
+        for (var i=x+1; i<y; i++)
+            str += dg[n[i]] +' ';
+    }
+    alert(str.replace(/\s+/g,' '));

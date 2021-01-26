@@ -1,17 +1,18 @@
 var email = prompt("Enter your E-mail  Address");
 var n = false;
-if (id.indexof("@")!== -1) {
-    for (let m = 0; m < id.length; m++) {
-        if (id.charAt(m) === (id.charAt(65-90 || id.charAt(97-122))) {
-            if (id.slice(indexof("@")+1,(id.length()-indexOf("@"))) === (id.charAt )) {
+if (email.indexOf("@") !== -1) {
+    for (let m = 0; m < email.length; m++) {
+        if (email.charAt(m) === (email.charAt(65-90) || email.charAt(97-122))) {
+            if ((email.slice(indexof("@")+1,(email.length())-indexOf("@"))) === 
+                (email.charAt(65-90 || email.charAt(97-122) ))) {
                 n = true;
                 break;
-            }   
-        }   
+}   
+        }
     }
-    document.write("Valid E-mail ID.");
+    alert("Valid E-mail ID.");
 }
 else {
     n = false;
-    document.write("Invalid E-mail ID.");
+    alert("Invalid E-mail ID.");
 }
